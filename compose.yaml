@@ -1,0 +1,35 @@
+services: 
+  vpn: 
+    build: 
+      context: ./openvpn
+    container_name: openvpn
+    privileged: true
+    dns: 
+      - 9.9.9.9
+    cap_add: 
+      - NET_ADMIN
+    environment: 
+      VPN_USERNAME: /run/secrets/vpn_username
+      VPN_PASSWORD: /run/secrets/vpn_password
+    secrets: 
+      - vpn_username
+      - vpn_password
+    networks: 
+      - default
+# this container is used for other apps 
+# that uses the open vpn container
+  # other_container:
+  #   build: ./other_container
+  #   network_mode: "service:vpn"
+
+networks:
+  default:  
+
+# do not put secrets directory in the project
+# because doing this will put your secrets into git
+
+secrets: 
+  pia_username:
+    file: ./openvpn/secrets/vpn_username.txt
+  pia_password:
+    file: ./openvpn/secrets/vpn_password.txt 
