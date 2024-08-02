@@ -29,7 +29,7 @@ networks:
 # because doing this will put your secrets into git
 
 secrets: 
-  pia_username:
+  vpn_username:
     file: ./openvpn/secrets/vpn_username.txt
-  pia_password:
+  vpn_password:
     file: ./openvpn/secrets/vpn_password.txt 
