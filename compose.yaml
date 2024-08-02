@@ -18,9 +18,9 @@ services:
       - default
 # this container is used for other apps 
 # that uses the open vpn container
-  # other_container:
-  #   build: ./other_container
-  #   network_mode: "service:vpn"
+  other_container:
+    build: ./other_container
+    network_mode: "service:vpn"
 
 networks:
   default:  
